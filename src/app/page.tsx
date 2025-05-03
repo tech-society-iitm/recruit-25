@@ -315,7 +315,13 @@ export default function Home() {
                         <div>
                             <label htmlFor="email" className={labelClasses}>Email <span className="text-nord11">*</span></label>
                             <input id="email" type="email" placeholder="your-iitm-email@ds.study.iitm.ac.in" className={cn(baseInputClasses, errors.email && "border-nord11 ring-1 ring-nord11")}
-                                {...register('email', { required: "Email is required", pattern: { value: /^[a-zA-Z0-9._%+-]+@ds\.study\.iitm\.ac\.in$/i, message: "Must be a valid IITM DS email (@ds.study.iitm.ac.in)" } })} />
+                                {...register('email', { 
+                                  required: "Email is required", 
+                                  pattern: { 
+                                    value: /^[a-zA-Z0-9._%+-]+@(ds|es)\.study\.iitm\.ac\.in$/i, 
+                                    message: "Must be a valid IITM email (@ds.study.iitm.ac.in or @es.study.iitm.ac.in)" 
+                                  } 
+                                })}/>
                             {errors.email && <p className={errorClasses}>{errors.email.message}</p>}
                         </div>
                         {/* Full Name */}
