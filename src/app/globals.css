@@ -59,7 +59,7 @@
   }
 
   .form-header {
-    @apply border-b border-nord3 p-6 text-center relative overflow-hidden;
+    @apply  p-6 text-center relative overflow-hidden;
   }
 
   .form-title {
@@ -114,9 +114,6 @@
     @apply bg-nord3 text-nord4;
   }
 
-  .step-line {
-    @apply h-1 bg-nord3 flex-grow;
-  }
 
   .step-line-active {
     @apply bg-nord9;
