@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import gsap from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils'; // Assuming you have this utility
-import { useAuth, useUser } from '@clerk/nextjs';
+import { useAuth, useUser, useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 // --- Constants (Keep these as they are) ---
@@ -81,6 +81,7 @@ const cardSelectionActiveClasses = "bg-nord1/80 border-nord8 ring-1 ring-nord8";
 export default function Home() {
   const { isLoaded, userId, isSignedIn } = useAuth();
   const { user } = useUser();
+  const { signOut } = useClerk();
   const router = useRouter();
 
   // Protect this page from unauthenticated users
@@ -361,6 +362,36 @@ export default function Home() {
               <p className="text-nord4 text-sm md:text-base">
                 Join our innovative community of tech enthusiasts
               </p>
+            {/* Header with logo and logout button */}
+            <div className="flex justify-between items-center mt-4">
+                <h2 className={cn(headingClasses, "text-2xl")}>
+                    {steps[currentStep]}
+                </h2>
+                <div className="relative group">
+                    <button 
+                        onClick={() => signOut()}
+                        className="flex items-center space-x-2 text-nord4 hover:text-nord6 transition-colors duration-200"
+                        title="Sign out"
+                    >
+                        <div className="w-10 h-10 rounded-full bg-nord2 flex items-center justify-center overflow-hidden border border-nord3 hover:border-nord8 transition-colors duration-200">
+                            {user?.imageUrl ? (
+                                <img 
+                                    src={user.imageUrl} 
+                                    alt="User avatar" 
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <svg className="w-6 h-6 text-nord8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            )}
+                        </div>
+                        <span className="absolute top-full right-0 mt-2 w-max bg-nord1 text-nord5 text-xs py-1 px-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            Sign out {user?.firstName || 'User'}
+                        </span>
+                    </button>
+                </div>
+            </div>
               {/* Progress bar - Enhanced */}
               <div className="mt-6 w-full bg-nord2/50 rounded-full h-2 overflow-hidden shadow-inner">
                   <div
