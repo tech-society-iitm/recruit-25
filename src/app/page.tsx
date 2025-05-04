@@ -23,7 +23,8 @@ const TIME_COMMITMENTS = [
   'More than 15 hours/week', 'Only weekends', 'Only weekdays',
 ];
 const INTERVIEW_DATES = [
-  'April 30, 2025', 'May 1, 2025', 'May 2, 2025', 'May 3, 2025', 'May 4, 2025', 'May 5, 2025',
+  'May 5, 2025', 'May 6, 2025', 'May 7, 2025', 'May 8, 2025', 'May 9, 2025', 'May 10, 2025', 'May 11, 2025', 'May 12, 2025',
+
 ];
 const INTERVIEW_TIMES = [
   '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM',
@@ -62,26 +63,18 @@ type FormData = {
   additionalInfo?: string;
 };
 
-// --- Tailwind Class Helpers (Example - Adapt or remove if defined elsewhere) ---
-// Assumes Nord theme colors are defined in tailwind.config.js
-const nord = {
-  0: '#2E3440', 1: '#3B4252', 2: '#434C5E', 3: '#4C566A',
-  4: '#D8DEE9', 5: '#E5E9F0', 6: '#ECEFF4', 7: '#8FBCBB',
-  8: '#88C0D0', 9: '#81A1C1', 10: '#5E81AC', 11: '#BF616A',
-  12: '#D08770', 13: '#EBCB8B', 14: '#A3BE8C', 15: '#B48EAD',
-};
-
-const baseInputClasses = "block w-full px-4 py-2 rounded-lg bg-nord1 border border-nord3 text-nord6 focus:outline-none focus:ring-2 focus:ring-nord8 focus:border-transparent transition-colors placeholder-nord3";
-const labelClasses = "block mb-1.5 text-sm font-medium text-nord4";
-const errorClasses = "mt-1 text-xs text-nord11";
-const checkboxLabelClasses = "flex items-center p-3 border border-nord3 rounded-lg cursor-pointer hover:bg-nord1 transition-colors duration-150 relative";
-const checkboxLabelActiveClasses = "bg-nord1 border-nord8 ring-1 ring-nord8";
-const checkboxInputClasses = "h-4 w-4 text-nord8 bg-nord1 border-nord3 rounded focus:ring-nord8 mr-3";
-const buttonPrimaryClasses = "inline-flex items-center justify-center px-5 py-2 bg-nord8 hover:bg-nord7 text-nord0 font-semibold rounded-lg shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-nord8 focus:ring-offset-2 focus:ring-offset-nord0";
-const buttonSecondaryClasses = "inline-flex items-center justify-center px-5 py-2 bg-nord3 hover:bg-nord2 text-nord6 font-semibold rounded-lg shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-nord3 focus:ring-offset-2 focus:ring-offset-nord0";
-const headingClasses = "text-xl font-semibold text-nord6";
-const cardSelectionClasses = "flex items-center p-3 border border-nord3 rounded-lg cursor-pointer hover:bg-nord1/50 transition-colors duration-150 relative";
-const cardSelectionActiveClasses = "bg-nord1 border-nord8 ring-1 ring-nord8";
+// --- Tailwind Class Helpers (Updated with Apple-inspired styling) ---
+const baseInputClasses = "block w-full px-4 py-3 rounded-xl bg-nord1/80 border border-nord3 text-nord6 focus:outline-none focus:ring-2 focus:ring-nord8 focus:border-transparent transition-colors placeholder-nord4/40";
+const labelClasses = "block mb-2 text-sm font-medium text-nord5";
+const errorClasses = "mt-1.5 text-xs text-nord11";
+const checkboxLabelClasses = "flex items-center p-3.5 border border-nord3 rounded-xl cursor-pointer hover:bg-nord1/70 transition-all duration-200 relative";
+const checkboxLabelActiveClasses = "bg-nord1/80 border-nord8 ring-1 ring-nord8";
+const checkboxInputClasses = "h-5 w-5 text-nord8 bg-nord1 border-nord3 rounded focus:ring-nord8 mr-3";
+const buttonPrimaryClasses = "inline-flex items-center justify-center px-6 py-3 bg-nord8 hover:bg-nord7 text-white font-semibold rounded-xl shadow-md transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-nord8 focus:ring-offset-2 focus:ring-offset-nord0";
+const buttonSecondaryClasses = "inline-flex items-center justify-center px-6 py-3 bg-nord3/70 hover:bg-nord2 text-nord6 font-semibold rounded-xl shadow-md transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-nord3 focus:ring-offset-2 focus:ring-offset-nord0";
+const headingClasses = "text-xl font-semibold text-nord6 tracking-tight";
+const cardSelectionClasses = "flex items-center p-4 border border-nord3 rounded-xl cursor-pointer hover:bg-nord1/50 transition-all duration-200 relative";
+const cardSelectionActiveClasses = "bg-nord1/80 border-nord8 ring-1 ring-nord8";
 // --- End Tailwind Class Helpers ---
 
 
@@ -115,31 +108,44 @@ export default function Home() {
     },
   });
 
-  // --- Hooks (Animations, Toast) ---
+  // --- Hooks (Enhanced Animations, Toast) ---
   useEffect(() => {
-    // Initial form fade-in
+    // Initial form fade-in with enhanced animation
     if (formRef.current) {
-      gsap.from(formRef.current, { opacity: 0, y: 20, duration: 0.5, ease: 'power1.out' });
+      gsap.from(formRef.current, { 
+        opacity: 0, 
+        y: 25, 
+        duration: 0.6, 
+        ease: 'power2.out',
+        clearProps: 'all' 
+      });
     }
   }, []);
 
   useEffect(() => {
-      // Animate form step content transition
+      // Animate form step content transition with enhanced easing
       const stepContent = formRef.current?.querySelector(`[data-step="${currentStep}"]`);
       if (stepContent) {
-          gsap.fromTo(stepContent, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+          gsap.fromTo(stepContent, 
+            { opacity: 0, y: 18 }, 
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', clearProps: 'all' }
+          );
       }
 
-      // Animate progress bar width
+      // Animate progress bar width with better easing
       if (progressRef.current) {
-          gsap.to(progressRef.current, { width: `${formProgress}%`, duration: 0.4, ease: 'power1.out' });
+          gsap.to(progressRef.current, { 
+            width: `${formProgress}%`, 
+            duration: 0.6, 
+            ease: 'power2.inOut' 
+          });
       }
   }, [currentStep, formProgress]);
 
   useEffect(() => {
-    // Auto-hide toast
+    // Auto-hide toast with better animation timing
     if (toast) {
-      const timer = setTimeout(() => setToast(null), 3000);
+      const timer = setTimeout(() => setToast(null), 3500);
       return () => clearTimeout(timer);
     }
   }, [toast]);
@@ -214,25 +220,46 @@ export default function Home() {
       setFormProgress(Math.ceil((prev / (steps.length - 1)) * 100));
   };
 
+  const getCurrentDateString = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today;
+  };
+  
+  // Filter available dates to exclude past dates
+  const AVAILABLE_INTERVIEW_DATES = INTERVIEW_DATES.filter(dateStr => {
+    const date = new Date(dateStr);
+    return date >= getCurrentDateString();
+  });
+  
+  // Add this to your component state
+  const [dateWarning, setDateWarning] = useState<string | null>(null);
+
   const steps = ["Basic Info", "Expertise", "Teams & Commitment", "Interview", "Review & Submit"];
   const formData = getValues(); // Get current form values for the review step display
 
   // --- Render Component ---
   return (
-    <div className="min-h-screen bg-nord0 text-nord6 py-8 px-4 sm:px-6 lg:px-8">
-      <div ref={formRef} className="w-full max-w-7xl mx-auto relative z-10">
+    <div className="min-h-screen bg-nord0 text-nord6 py-10 px-4 sm:px-6 lg:px-8">
+      {/* Main heading outside the form */}
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-nord6 mb-8 tracking-tight text-center mx-auto max-w-6xl">
+        Tech Society Recruitment 
+        <span className="text-nord8"> Form</span>
+      </h1>
+      
+      <div ref={formRef} className="w-full max-w-6xl mx-auto relative z-10">
         {/* Toast Notification Area */}
         <AnimatePresence>
           {toast && (
             <motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50, transition: { duration: 0.2 } }}
+              exit={{ opacity: 0, y: -50, transition: { duration: 0.3 } }}
               className={cn(
-                "fixed top-5 right-5 z-[100] p-4 rounded-md shadow-lg text-sm font-medium text-nord0", // High z-index
-                 toast.type === "success" && "bg-nord14",
-                 toast.type === "error" && "bg-nord11",
-                 toast.type === "warning" && "bg-nord13 text-nord1" // Better contrast for warning
+                "fixed top-5 right-5 z-[100] p-4 rounded-xl shadow-lg text-sm font-medium", // High z-index
+                 toast.type === "success" && "bg-nord14/90 text-black",
+                 toast.type === "error" && "bg-nord11/90 text-white",
+                 toast.type === "warning" && "bg-nord13/90 text-black" // Better contrast for warning
               )}
             >
               {toast.message}
@@ -241,29 +268,29 @@ export default function Home() {
         </AnimatePresence>
 
         {/* Main Layout: Sidebar + Content */}
-        <div className="flex flex-col md:flex-row bg-nord1 rounded-lg shadow-xl overflow-hidden">
+        <div className="flex flex-col md:flex-row bg-nord1 rounded-2xl shadow-xl overflow-hidden">
 
           {/* Left Vertical Step Indicator */}
-          <aside className="w-full md:w-64 flex-shrink-0 bg-nord2 p-6 border-b md:border-b-0 md:border-r border-nord3">
-            <h2 className="text-lg font-semibold text-nord6 mb-6 hidden md:block">Application Steps</h2>
+          <aside className="w-full md:w-72 flex-shrink-0 bg-nord2 p-6 border-b md:border-b-0 md:border-r border-nord3/50">
+            <h2 className="text-lg font-semibold text-nord6 mb-8 hidden md:block">Application Steps</h2>
             {/* Steps Navigation */}
-            <nav className="flex flex-row md:flex-col md:space-y-4 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+            <nav className="flex flex-row md:flex-col md:space-y-6 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
               {steps.map((step, index) => (
-                <div key={step} className="flex items-center space-x-3 md:space-x-0 md:items-start md:space-y-0 flex-shrink-0 mr-4 md:mr-0 relative group">
+                <div key={step} className="flex items-center space-x-3 md:space-x-0 md:items-start md:space-y-0 flex-shrink-0 mr-5 md:mr-0 relative group">
                    {/* Vertical line connector (desktop only) */}
                    {index < steps.length - 1 && (
-                        <div className="hidden md:block absolute left-[14px] top-9 h-[calc(100%-1rem)] w-px bg-nord3" />
+                        <div className="hidden md:block absolute left-[16px] top-10 h-[calc(100%-1.5rem)] w-0.5 bg-nord3/60" />
                    )}
                   {/* Step Dot and Label */}
-                  <div className="flex md:flex-row items-center space-x-3 py-1">
+                  <div className="flex md:flex-row items-center space-x-3.5 py-1.5">
                     <div
                       className={cn(
-                        "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ease-in-out relative z-10 border",
+                        "w-9 h-9 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out relative z-10 border",
                         currentStep === index
-                          ? "bg-nord8 text-nord0 border-nord8 scale-105 shadow" // Active
+                          ? "bg-nord8 text-white border-nord8 scale-110 shadow-lg shadow-nord8/30" // Active
                           : currentStep > index
-                          ? "bg-nord14 text-nord0 border-nord14" // Completed
-                          : "bg-nord3 text-nord5 border-nord4 group-hover:border-nord5" // Inactive
+                          ? "bg-nord14 text-black border-nord14 shadow-md shadow-nord14/20" // Completed
+                          : "bg-nord3/80 text-nord5 border-nord4/30 group-hover:border-nord5/50" // Inactive
                       )}
                     >
                       {currentStep > index ? (
@@ -275,7 +302,7 @@ export default function Home() {
                     </div>
                     <span className={cn(
                         "text-sm font-medium transition-colors duration-300 ease-in-out whitespace-nowrap",
-                        currentStep === index ? "text-nord8" : "text-nord4 group-hover:text-nord5"
+                        currentStep === index ? "text-nord8 font-semibold" : "text-nord4 group-hover:text-nord5"
                     )}>
                       {step}
                     </span>
@@ -288,25 +315,22 @@ export default function Home() {
           {/* Right Content Area (Form) */}
           <main className="flex-grow bg-nord0 p-6 md:p-8 lg:p-10 min-w-0">
             {/* Form Header */}
-            <header className="mb-6">
-              <h1 className="text-2xl md:text-3xl font-bold text-nord6 mb-1">
-                Tech Society Recruitment Form
-              </h1>
+            <header className="mb-8">
               <p className="text-nord4 text-sm md:text-base">
                 Join our innovative community of tech enthusiasts
               </p>
-              {/* Progress bar */}
-              <div className="mt-4 w-full bg-nord2 rounded-full h-2 overflow-hidden">
+              {/* Progress bar - Enhanced */}
+              <div className="mt-6 w-full bg-nord2/50 rounded-full h-2 overflow-hidden shadow-inner">
                   <div
                       ref={progressRef}
-                      className="bg-nord8 h-2 rounded-full transition-all duration-300 ease-out"
+                      className="bg-gradient-to-r from-nord7 to-nord8 h-2 rounded-full transition-all duration-300 ease-out shadow-sm"
                       style={{ width: `${formProgress}%` }} // Width controlled by state/GSAP
                   />
               </div>
             </header>
 
             {/* Form Steps Content */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
                 {/* Step 1: Basic Information */}
                 <section data-step="0" className={cn("space-y-6", currentStep === 0 ? "block" : "hidden")}>
                     <h2 className={headingClasses}>Personal Information</h2>
@@ -373,9 +397,9 @@ export default function Home() {
                         </div>
                     </div>
                     {/* Navigation */}
-                    <div className="flex justify-end pt-4">
+                    <div className="flex justify-end pt-6">
                         <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={nextStep} className={buttonPrimaryClasses}>
-                            Next: Expertise <span aria-hidden="true" className="ml-1 font-sans">→</span>
+                            Next: Expertise <span aria-hidden="true" className="ml-2 font-sans">→</span>
                         </motion.button>
                     </div>
                 </section>
@@ -394,7 +418,7 @@ export default function Home() {
                                         {...register('domains', { required: "Select at least one domain of interest" })} />
                                     <span className="text-nord5 flex-1">{domain}</span>
                                     {watch('domains')?.includes(domain) && (
-                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-nord8 rounded-full ring-1 ring-nord1"/>
+                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-2 right-2 w-3 h-3 bg-nord8 rounded-full ring-1 ring-nord1"/>
                                     )}
                                 </label>
                             ))}
@@ -404,25 +428,25 @@ export default function Home() {
                     {/* Domain Motivation */}
                     <div>
                         <label htmlFor="domainWhy" className={labelClasses}>Why are you interested in these domains? (Optional)</label>
-                        <textarea id="domainWhy" placeholder="Share your passion, projects, or learning goals related to your chosen domains." rows={4} className={cn(baseInputClasses, "min-h-[100px]")} {...register('domainWhy')} />
+                        <textarea id="domainWhy" placeholder="Share your passion, projects, or learning goals related to your chosen domains." rows={4} className={cn(baseInputClasses, "min-h-[110px]")} {...register('domainWhy')} />
                     </div>
                     {/* Technical Experience */}
                     <div>
                         <label htmlFor="experience" className={labelClasses}>Relevant Technical Experience <span className="text-nord11">*</span></label>
                         <p className="text-sm text-nord4 mb-2">Describe projects, skills, coursework, or contributions (min. 50 chars).</p>
                         <textarea id="experience" placeholder="Example: Built a web app using React & Node; Contributed to open-source project X; Proficient in Python for data analysis..." rows={5}
-                            className={cn(baseInputClasses, "min-h-[120px]", errors.experience && "border-nord11 ring-1 ring-nord11")}
+                            className={cn(baseInputClasses, "min-h-[130px]", errors.experience && "border-nord11 ring-1 ring-nord11")}
                             {...register('experience', { required: "Please describe your technical experience", minLength: { value: 50, message: "Please provide at least 50 characters" } })} />
                         {errors.experience && <p className={errorClasses}>{errors.experience.message}</p>}
-                        <p className="text-xs text-nord4 mt-1 text-right">{watch('experience')?.length || 0}/50 characters minimum</p>
+                        <p className="text-xs text-nord4 mt-1.5 text-right">{watch('experience')?.length || 0}/50 characters minimum</p>
                     </div>
                     {/* Navigation */}
-                    <div className="flex justify-between pt-4">
+                    <div className="flex justify-between pt-6">
                         <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={prevStep} className={buttonSecondaryClasses}>
-                            <span aria-hidden="true" className="mr-1 font-sans">←</span> Back
+                            <span aria-hidden="true" className="mr-2 font-sans">←</span> Back
                         </motion.button>
                         <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={nextStep} className={buttonPrimaryClasses}>
-                            Next: Teams <span aria-hidden="true" className="ml-1 font-sans">→</span>
+                            Next: Teams <span aria-hidden="true" className="ml-2 font-sans">→</span>
                         </motion.button>
                     </div>
                  </section>
@@ -434,7 +458,7 @@ export default function Home() {
                     <div>
                         <label className={labelClasses}>Preferred Teams <span className="text-nord11">*</span></label>
                         <p className="text-sm text-nord4 mb-3">Select teams you're interested in joining. You may be considered for others based on profile.</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                             {TEAMS.map((team) => (
                                 <label key={team} className={cn(checkboxLabelClasses, watch('teams')?.includes(team) && checkboxLabelActiveClasses, "items-start")}>
                                      <input type="checkbox" value={team} className={cn(checkboxInputClasses, "mt-1")}
@@ -444,7 +468,7 @@ export default function Home() {
                                         <p className="text-xs text-nord4">{getTeamDescription(team)}</p>
                                     </div>
                                     {watch('teams')?.includes(team) && (
-                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-nord8 rounded-full ring-1 ring-nord1"/>
+                                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-2 right-2 w-3 h-3 bg-nord8 rounded-full ring-1 ring-nord1"/>
                                     )}
                                 </label>
                             ))}
@@ -454,12 +478,12 @@ export default function Home() {
                     {/* Team Motivation */}
                      <div>
                         <label htmlFor="teamWhy" className={labelClasses}>Why these teams? What can you contribute? (Optional)</label>
-                        <textarea id="teamWhy" placeholder="Explain your interest in the selected teams and any relevant skills or ideas you have." rows={4} className={cn(baseInputClasses, "min-h-[100px]")} {...register('teamWhy')} />
+                        <textarea id="teamWhy" placeholder="Explain your interest in the selected teams and any relevant skills or ideas you have." rows={4} className={cn(baseInputClasses, "min-h-[110px]")} {...register('teamWhy')} />
                     </div>
                     {/* Society Motivation */}
                     <div>
                         <label htmlFor="motivation" className={labelClasses}>Motivation for Joining Tech Society (Optional)</label>
-                        <textarea id="motivation" placeholder="What do you hope to gain or achieve by being part of the society?" rows={4} className={cn(baseInputClasses, "min-h-[100px]")} {...register('motivation')} />
+                        <textarea id="motivation" placeholder="What do you hope to gain or achieve by being part of the society?" rows={4} className={cn(baseInputClasses, "min-h-[110px]")} {...register('motivation')} />
                     </div>
                     {/* Time Commitment Dropdown */}
                      <div>
@@ -473,12 +497,12 @@ export default function Home() {
                         {errors.timeCommitment && <p className={errorClasses}>{errors.timeCommitment.message}</p>}
                     </div>
                      {/* Navigation */}
-                    <div className="flex justify-between pt-4">
+                    <div className="flex justify-between pt-6">
                          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={prevStep} className={buttonSecondaryClasses}>
-                             <span aria-hidden="true" className="mr-1 font-sans">←</span> Back
+                             <span aria-hidden="true" className="mr-2 font-sans">←</span> Back
                          </motion.button>
                          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={nextStep} className={buttonPrimaryClasses}>
-                            Next: Interview <span aria-hidden="true" className="ml-1 font-sans">→</span>
+                            Next: Interview <span aria-hidden="true" className="ml-2 font-sans">→</span>
                         </motion.button>
                      </div>
                  </section>
@@ -491,18 +515,50 @@ export default function Home() {
                     <div>
                         <label className={labelClasses}>Available Dates <span className="text-nord11">*</span></label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                            {INTERVIEW_DATES.map((date) => (
-                                <label key={date} className={cn(checkboxLabelClasses, watch('interviewDates')?.includes(date) && checkboxLabelActiveClasses, "justify-center text-center")}>
-                                    <input type="checkbox" value={date} className="sr-only peer" // Hide input, use peer
-                                        {...register('interviewDates', { required: "Select at least one available date" })} />
-                                    <span className="text-nord5 peer-checked:text-nord8">{date}</span>
-                                    {/* Checkmark visible when checked */}
-                                     <motion.div
-                                        className="absolute top-1 right-1 w-3 h-3 bg-nord8 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"
-                                        initial={{ scale: 0 }} animate={{ scale: watch('interviewDates')?.includes(date) ? 1 : 0 }}
-                                      />
-                                </label>
-                            ))}
+                          {dateWarning && (
+                            <p className="text-nord13 text-sm col-span-full mb-2">{dateWarning}</p>
+                          )}
+                          {INTERVIEW_DATES.map((date) => {
+                            const isDatePast = new Date(date) < getCurrentDateString();
+                            return (
+                              <label 
+                                key={date} 
+                                className={cn(
+                                  checkboxLabelClasses, 
+                                  watch('interviewDates')?.includes(date) && checkboxLabelActiveClasses,
+                                  "justify-center text-center",
+                                  isDatePast && "opacity-50 cursor-not-allowed bg-nord1/30 hover:bg-nord1/30"
+                                )}
+                              >
+                                <input 
+                                  type="checkbox" 
+                                  value={date} 
+                                  disabled={isDatePast}
+                                  className="sr-only peer" 
+                                  onClick={() => {
+                                    if (isDatePast) {
+                                      setDateWarning(`${date} has already passed and cannot be selected.`);
+                                      setTimeout(() => setDateWarning(null), 3000);
+                                      return false;
+                                    }
+                                  }}
+                                  {...register('interviewDates', { required: "Select at least one available date" })} 
+                                />
+                                <span className={cn(
+                                  "text-nord5 peer-checked:text-nord8",
+                                  isDatePast && "text-nord4 line-through"
+                                )}>
+                                  {date}
+                                  {isDatePast && <span className="ml-1 text-xs">(past)</span>}
+                                </span>
+                                <motion.div
+                                  className="absolute top-1.5 right-1.5 w-3 h-3 bg-nord8 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"
+                                  initial={{ scale: 0 }} 
+                                  animate={{ scale: watch('interviewDates')?.includes(date) ? 1 : 0 }}
+                                />
+                              </label>
+                            );
+                          })}
                         </div>
                         {errors.interviewDates && <p className={errorClasses}>{errors.interviewDates.message}</p>}
                     </div>
@@ -516,7 +572,7 @@ export default function Home() {
                                         {...register('interviewTimes', { required: "Select at least one preferred time slot" })} />
                                      <span className="text-nord5 peer-checked:text-nord8">{time}</span>
                                      <motion.div
-                                        className="absolute top-1 right-1 w-3 h-3 bg-nord8 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"
+                                        className="absolute top-1.5 right-1.5 w-3 h-3 bg-nord8 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"
                                         initial={{ scale: 0 }} animate={{ scale: watch('interviewTimes')?.includes(time) ? 1 : 0 }}
                                       />
                                 </label>
@@ -527,15 +583,15 @@ export default function Home() {
                     {/* Additional Info */}
                      <div>
                         <label htmlFor="additionalInfo" className={labelClasses}>Additional Information / Constraints (Optional)</label>
-                        <textarea id="additionalInfo" placeholder="Anything else we should know regarding your availability or application?" rows={4} className={cn(baseInputClasses, "min-h-[100px]")} {...register('additionalInfo')} />
+                        <textarea id="additionalInfo" placeholder="Anything else we should know regarding your availability or application?" rows={4} className={cn(baseInputClasses, "min-h-[110px]")} {...register('additionalInfo')} />
                     </div>
                     {/* Navigation */}
-                     <div className="flex justify-between pt-4">
+                     <div className="flex justify-between pt-6">
                         <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={prevStep} className={buttonSecondaryClasses}>
-                             <span aria-hidden="true" className="mr-1 font-sans">←</span> Back
+                             <span aria-hidden="true" className="mr-2 font-sans">←</span> Back
                         </motion.button>
                          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={nextStep} className={buttonPrimaryClasses}>
-                            Review Application <span aria-hidden="true" className="ml-1 font-sans">→</span>
+                            Review Application <span aria-hidden="true" className="ml-2 font-sans">→</span>
                         </motion.button>
                      </div>
                  </section>
@@ -549,17 +605,17 @@ export default function Home() {
                     <div className="space-y-4">
                         {/* Section: Personal Info */}
                         <motion.details
-                           className="bg-nord1 p-4 rounded-lg border border-nord3 overflow-hidden group"
+                           className="bg-nord1/80 p-5 rounded-xl border border-nord3/50 overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
                         >
                             <summary className="flex justify-between items-center cursor-pointer list-none group">
                                 <h3 className="text-md font-semibold text-nord8">Personal Information</h3>
-                                <span className="text-nord4 transition-transform duration-200 group-open:rotate-90">
+                                <span className="text-nord4 transition-transform duration-300 group-open:rotate-90">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
                                 </span>
                             </summary>
-                            <div className="mt-4">
-                                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                            <div className="mt-5 animate-fade-in">
+                                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
                                     <div className="sm:col-span-1"><dt className="text-nord4">Name:</dt><dd className="text-nord6 break-words">{formData.fullName || '-'}</dd></div>
                                     <div className="sm:col-span-1"><dt className="text-nord4">Email:</dt><dd className="text-nord6 break-words">{formData.email || '-'}</dd></div>
                                     <div className="sm:col-span-1"><dt className="text-nord4">Degree:</dt><dd className="text-nord6">{formData.degreeType || '-'}</dd></div>
@@ -573,31 +629,31 @@ export default function Home() {
 
                          {/* Section: Technical Expertise */}
                          <motion.details
-                            className="bg-nord1 p-4 rounded-lg border border-nord3 overflow-hidden group"
+                            className="bg-nord1/80 p-5 rounded-xl border border-nord3/50 overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
                          >
                              <summary className="flex justify-between items-center cursor-pointer list-none group">
                                  <h3 className="text-md font-semibold text-nord8">Technical Expertise</h3>
-                                 <span className="text-nord4 transition-transform duration-200 group-open:rotate-90">
+                                 <span className="text-nord4 transition-transform duration-300 group-open:rotate-90">
                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
                                  </span>
                              </summary>
-                            <div className="mt-4">
-                                <dl className="space-y-3 text-sm">
+                            <div className="mt-5 animate-fade-in">
+                                <dl className="space-y-4 text-sm">
                                     <div>
-                                        <dt className="text-nord4 mb-1">Domains of Interest:</dt>
+                                        <dt className="text-nord4 mb-1.5">Domains of Interest:</dt>
                                         <dd className="flex flex-wrap gap-1.5">
                                             {formData.domains?.length > 0
-                                                ? formData.domains.map(d => <span key={d} className="bg-nord9/20 text-nord9 px-2 py-0.5 rounded text-xs font-medium">{d}</span>)
+                                                ? formData.domains.map(d => <span key={d} className="bg-nord9/20 text-nord9 px-2.5 py-1 rounded-md text-xs font-medium">{d}</span>)
                                                 : <span className="text-nord4 italic text-xs">- Not specified -</span>}
                                         </dd>
                                     </div>
                                      <div>
-                                        <dt className="text-nord4 mb-1">Domain Motivation:</dt>
+                                        <dt className="text-nord4 mb-1.5">Domain Motivation:</dt>
                                         <dd className="text-nord6 whitespace-pre-wrap text-xs leading-relaxed">{formData.domainWhy || <span className="text-nord4 italic">- Not specified -</span>}</dd>
                                      </div>
                                      <div>
-                                        <dt className="text-nord4 mb-1">Experience:</dt>
+                                        <dt className="text-nord4 mb-1.5">Experience:</dt>
                                         <dd className="text-nord6 whitespace-pre-wrap text-xs leading-relaxed">{formData.experience || <span className="text-nord4 italic">- Not specified -</span>}</dd>
                                     </div>
                                 </dl>
@@ -606,31 +662,31 @@ export default function Home() {
 
                         {/* Section: Teams & Commitment */}
                         <motion.details
-                            className="bg-nord1 p-4 rounded-lg border border-nord3 overflow-hidden group"
+                            className="bg-nord1/80 p-5 rounded-xl border border-nord3/50 overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
                         >
                             <summary className="flex justify-between items-center cursor-pointer list-none group">
                                 <h3 className="text-md font-semibold text-nord8">Teams & Commitment</h3>
-                                <span className="text-nord4 transition-transform duration-200 group-open:rotate-90">
+                                <span className="text-nord4 transition-transform duration-300 group-open:rotate-90">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
                                 </span>
                             </summary>
-                             <div className="mt-4">
-                                <dl className="space-y-3 text-sm">
+                             <div className="mt-5 animate-fade-in">
+                                <dl className="space-y-4 text-sm">
                                     <div>
-                                        <dt className="text-nord4 mb-1">Preferred Teams:</dt>
+                                        <dt className="text-nord4 mb-1.5">Preferred Teams:</dt>
                                         <dd className="flex flex-wrap gap-1.5">
                                             {formData.teams?.length > 0
-                                                ? formData.teams.map(t => <span key={t} className="bg-nord10/20 text-nord10 px-2 py-0.5 rounded text-xs font-medium">{t}</span>)
+                                                ? formData.teams.map(t => <span key={t} className="bg-nord10/20 text-nord10 px-2.5 py-1 rounded-md text-xs font-medium">{t}</span>)
                                                 : <span className="text-nord4 italic text-xs">- Not specified -</span>}
                                         </dd>
                                     </div>
                                     <div>
-                                        <dt className="text-nord4 mb-1">Team Motivation:</dt>
+                                        <dt className="text-nord4 mb-1.5">Team Motivation:</dt>
                                         <dd className="text-nord6 whitespace-pre-wrap text-xs leading-relaxed">{formData.teamWhy || <span className="text-nord4 italic">- Not specified -</span>}</dd>
                                      </div>
                                      <div>
-                                        <dt className="text-nord4 mb-1">Society Motivation:</dt>
+                                        <dt className="text-nord4 mb-1.5">Society Motivation:</dt>
                                         <dd className="text-nord6 whitespace-pre-wrap text-xs leading-relaxed">{formData.motivation || <span className="text-nord4 italic">- Not specified -</span>}</dd>
                                      </div>
                                     <div>
@@ -643,35 +699,35 @@ export default function Home() {
 
                         {/* Section: Interview Availability */}
                          <motion.details
-                            className="bg-nord1 p-4 rounded-lg border border-nord3 overflow-hidden group"
+                            className="bg-nord1/80 p-5 rounded-xl border border-nord3/50 overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
                         >
                             <summary className="flex justify-between items-center cursor-pointer list-none group">
                                 <h3 className="text-md font-semibold text-nord8">Interview Availability</h3>
-                                <span className="text-nord4 transition-transform duration-200 group-open:rotate-90">
+                                <span className="text-nord4 transition-transform duration-300 group-open:rotate-90">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
                                 </span>
                             </summary>
-                             <div className="mt-4">
-                                <dl className="space-y-3 text-sm">
+                             <div className="mt-5 animate-fade-in">
+                                <dl className="space-y-4 text-sm">
                                     <div>
-                                        <dt className="text-nord4 mb-1">Available Dates:</dt>
+                                        <dt className="text-nord4 mb-1.5">Available Dates:</dt>
                                         <dd className="flex flex-wrap gap-1.5">
                                              {formData.interviewDates?.length > 0
-                                                ? formData.interviewDates.map(d => <span key={d} className="bg-nord14/20 text-nord14 px-2 py-0.5 rounded text-xs font-medium">{d}</span>)
+                                                ? formData.interviewDates.map(d => <span key={d} className="bg-nord14/20 text-nord14 px-2.5 py-1 rounded-md text-xs font-medium">{d}</span>)
                                                 : <span className="text-nord4 italic text-xs">- Not specified -</span>}
                                         </dd>
                                     </div>
                                     <div>
-                                        <dt className="text-nord4 mb-1">Preferred Times (IST):</dt>
+                                        <dt className="text-nord4 mb-1.5">Preferred Times (IST):</dt>
                                         <dd className="flex flex-wrap gap-1.5">
                                              {formData.interviewTimes?.length > 0
-                                                ? formData.interviewTimes.map(t => <span key={t} className="bg-nord7/25 text-nord7 px-2 py-0.5 rounded text-xs font-medium">{t}</span>)
+                                                ? formData.interviewTimes.map(t => <span key={t} className="bg-nord7/25 text-nord7 px-2.5 py-1 rounded-md text-xs font-medium">{t}</span>)
                                                 : <span className="text-nord4 italic text-xs">- Not specified -</span>}
                                         </dd>
                                     </div>
                                      <div>
-                                        <dt className="text-nord4 mb-1">Additional Information:</dt>
+                                        <dt className="text-nord4 mb-1.5">Additional Information:</dt>
                                         <dd className="text-nord6 whitespace-pre-wrap text-xs leading-relaxed">{formData.additionalInfo || <span className="text-nord4 italic">- Not specified -</span>}</dd>
                                      </div>
                                 </dl>
@@ -680,23 +736,23 @@ export default function Home() {
                     </div>
 
                     {/* Final Navigation/Submit Buttons */}
-                    <div className="flex justify-between mt-10 pt-6 border-t border-nord3">
+                    <div className="flex justify-between mt-10 pt-6 border-t border-nord3/40">
                         <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={prevStep} className={buttonSecondaryClasses}>
-                            <span aria-hidden="true" className="mr-1 font-sans">←</span> Go Back & Edit
+                            <span aria-hidden="true" className="mr-2 font-sans">←</span> Go Back & Edit
                         </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                             type="submit"
                             disabled={isSubmitting}
                             className={cn(
-                                buttonPrimaryClasses, "bg-nord14 hover:bg-nord14/80", // Green for submit
-                                "disabled:opacity-60 disabled:cursor-not-allowed disabled:bg-nord3" // Disabled state
+                                buttonPrimaryClasses, "bg-nord14 hover:bg-nord14/90", // Green for submit
+                                "disabled:opacity-60 disabled:cursor-not-allowed disabled:bg-nord3/80" // Disabled state
                             )}
                         >
                             {isSubmitting ? (
                                 // Loading Spinner
                                 <span className='flex items-center'>
-                                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-nord0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
@@ -709,8 +765,8 @@ export default function Home() {
             </form>
 
              {/* Footer inside the main content area */}
-             <footer className="text-center text-xs text-nord4 mt-8 pt-4 border-t border-nord3">
-                 Tech Society Recruitment Form © {new Date().getFullYear()}.
+             <footer className="text-center text-xs text-nord4 mt-10 pt-5 border-t border-nord3/40">
+                 Tech Society Recruitment © {new Date().getFullYear()}.
                  For Indian Institute of Technology Madras students only.
              </footer>
 
