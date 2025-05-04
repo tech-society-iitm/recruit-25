@@ -459,7 +459,7 @@ details:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.3);
 }
-
+/* Form container adjustments */
 /* Form container adjustments */
 .max-w-7xl {
   max-width: 72rem; /* Slightly wider for larger screens */
