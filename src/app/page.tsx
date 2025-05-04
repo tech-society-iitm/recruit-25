@@ -41,7 +41,7 @@ const getTeamDescription = (team: string) => {
     default: return '';
   }
 };
-
+//
 // --- FormData Type (Keep this as it is) ---
 type FormData = {
   email: string;
