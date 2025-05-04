@@ -65,9 +65,9 @@ type FormData = {
 };
 
 // --- Tailwind Class Helpers (Updated with Apple-inspired styling) ---
-const baseInputClasses = "block w-full px-4 py-3 rounded-xl bg-nord1/80 border border-nord3 text-nord6 focus:outline-none focus:ring-2 focus:ring-nord8 focus:border-transparent transition-colors placeholder-nord4/40";
+const baseInputClasses = "block w-full px-4 py-3 rounded-xl bg-nord1/80 border border-nord3 text-nord5 focus:outline-none focus:ring-2 focus:ring-nord8 focus:border-transparent transition-colors placeholder-nord4/40";
 const labelClasses = "block mb-2 text-sm font-medium text-nord5";
-const errorClasses = "mt-1.5 text-xs text-nord11";
+const errorClasses = "mt-1.5 text-xs text-red-400";
 const checkboxLabelClasses = "flex items-center p-3.5 border border-nord3 rounded-xl cursor-pointer hover:bg-nord1/70 transition-all duration-200 relative";
 const checkboxLabelActiveClasses = "bg-nord1/80 border-nord8 ring-1 ring-nord8";
 const checkboxInputClasses = "h-5 w-5 text-nord8 bg-nord1 border-nord3 rounded focus:ring-nord8 mr-3";
