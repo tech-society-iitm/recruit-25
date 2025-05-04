@@ -438,12 +438,36 @@ export default function Home() {
                         {/* LinkedIn */}
                         <div>
                             <label htmlFor="linkedin" className={labelClasses}>LinkedIn Profile (Optional)</label>
-                            <input id="linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile" className={baseInputClasses} {...register('linkedin')} />
+                            <input 
+                                id="linkedin" 
+                                type="url" 
+                                placeholder="https://linkedin.com/in/yourprofile" 
+                                className={cn(baseInputClasses, errors.linkedin && "border-nord11 ring-1 ring-nord11")} 
+                                {...register('linkedin', {
+                                    pattern: {
+                                        value: /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/i,
+                                        message: "Please enter a valid LinkedIn URL or leave it empty"
+                                    }
+                                })} 
+                            />
+                            {errors.linkedin && <p className={errorClasses}>{errors.linkedin.message}</p>}
                         </div>
                         {/* GitHub */}
                         <div>
                             <label htmlFor="github" className={labelClasses}>GitHub Profile (Optional)</label>
-                            <input id="github" type="url" placeholder="https://github.com/yourusername" className={baseInputClasses} {...register('github')} />
+                            <input 
+                                id="github" 
+                                type="url" 
+                                placeholder="https://github.com/yourusername" 
+                                className={cn(baseInputClasses, errors.github && "border-nord11 ring-1 ring-nord11")} 
+                                {...register('github', {
+                                    pattern: {
+                                        value: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/i,
+                                        message: "Please enter a valid GitHub URL or leave it empty"
+                                    }
+                                })} 
+                            />
+                            {errors.github && <p className={errorClasses}>{errors.github.message}</p>}
                         </div>
                     </div>
                     {/* Navigation */}
